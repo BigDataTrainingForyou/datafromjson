@@ -1,0 +1,53 @@
+
+
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+  </head>
+  <script>
+var app = angular.module("myapp", []);
+// Controller is injected with $scope and $http as dependencies
+app.controller("indexCtrl", function ($scope, $http) {
+  //  $http.get('https://api.github.com/users/angular/repos')
+  // $http.get('http://www.omdbapi.com/?t=Sherlock Holmes&tomatoes=true&plot=full')
+       // .success(function (repos) {
+        //$scope.repos = repos
+    //});
+        // $scope.search = "Sherlock Holmes";
+
+    //function fetch(){
+     
+  
+       
+$http.get("http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo")
+
+  //north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo")
+        .then(function(response){ $scope.details = response.data.geonames; });
+
+    //}
+});
+
+
+
+    
+
+  </script>
+
+  <body ng-app="myapp">
+
+      <div ng-controller="indexCtrl">
+
+         <ul>
+  <li ng-repeat="x in details">
+    {{ x.countrycode + ', ' + x.name + ', ' + x.toponymName + ', ' + x.fcodeName}}
+
+
+
+  </li>
+</ul>
+
+        
+      </div>
+
+  </body>
+</html>
